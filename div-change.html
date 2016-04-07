@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>homework</title>
+	<script type="text/javascript">
+		setInterval(function(){
+			var oDiv = document.getElementById('div1');
+			var old_width = parseInt(oDiv.style.width);
+			var old_height = parseInt(oDiv.style.height);
+			var new_width = old_width + 10;
+			var new_heigth = old_height +10;
+
+			if((new_width>=400)||(new_heigth>=400)){
+				// alert(new_width);
+				var timer = setInterval(function(){
+					new_width = new_width - 10;
+					new_heigth = new_heigth - 10;
+					oDiv.style.width = new_width + 'px';
+					oDiv.style.height = new_heigth + 'px';
+					if((new_width<=200)||(new_heigth<=200)){
+						clearInterval(timer);
+					}
+				}, 200);
+				
+			}
+
+			oDiv.style.width = new_width + 'px';
+			oDiv.style.height = new_heigth + 'px';
+		}, 200)
+	</script>
+</head>
+<body>
+	<div id='div1' style='width:200px;height:200px;background-color:red;'>div图形自动变大变小</div>
+</body>
+</html>
