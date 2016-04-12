@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<title>打字游戏</title>
+	<style type="text/css">
+		h2{
+			float: left;font-size: 50px;
+			font-family: 微软雅黑;margin-left: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		
+		var oDiv = document.getElementById('box');
+		var aWord = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'];
+		function appendWord(){
+			var suijishu = Math.floor(Math.random()*15);
+			var word = aWord[suijishu];
+			var newObj = document.createElement('h2');
+			newObj.innerHTML = word;
+			oDiv.appendChild(newObj);
+		}
+		for(var i=0;i<5;i++){
+			appendWord();
+		}
+		window.onkeydown = function(ev){
+			var evt = window.event || ev;
+			var jian = String.fromCharCode(evt.keyCode);
+			var h2s = oDiv.getElementsByTagName('h2');
+			for(var j=0;j<h2s.length;j++){
+				if(jian==h2s[j].innerHTML){
+					oDiv.removeChild(h2s[j]);
+					appendWord();
+				}
+			}
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id='box'></div>
+</body>
+</html>
